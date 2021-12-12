@@ -21,7 +21,7 @@ import lombok.Setter;
 public class InfosGenerales implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idInfosGenerales;
 	private Date dateCreation;
 	private Date dateModification;
 }

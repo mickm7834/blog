@@ -1,11 +1,19 @@
 package com.doranco.blog.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,13 +33,26 @@ public class Utilisateur implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idUtilisateur;
 	private String nom;
 	private String prenom;
+	@Enumerated(EnumType.STRING)
 	private Sexe sexe;
 	private String email;
 	private String telephone;
 	private String avatar;
 	private String description;
+	@OneToMany(mappedBy = "utilisateur", orphanRemoval = true)
+	private List<Publication> publications = new ArrayList<>();
+	@OneToMany(mappedBy = "utilisateur", orphanRemoval = true)
+	private List<EnvoyerMessage> envoyerMessages = new ArrayList<>();
+	@OneToMany(mappedBy = "utilisateur", orphanRemoval = true)
+	private List<EnvoyerDemande> envoyerDemandes = new ArrayList<>();
+	@ManyToMany
+	private List<Groupe> groupes = new ArrayList<>();
+	@ManyToMany(mappedBy = "utilisateur")
+	@JsonIgnore
+	private List<Utilisateur> utilisateur;
+	
 
 }

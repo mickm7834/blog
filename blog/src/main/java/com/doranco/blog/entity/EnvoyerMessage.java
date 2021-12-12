@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,10 @@ import lombok.Setter;
 public class EnvoyerMessage implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idMessage;
+	private Long idEnvoyerMessage;
 	private String contenu;
 	private Date dateEnvoi;
 	private boolean lu;
+	@ManyToOne
+	private EnvoyerMessage envoyerMessage;
 }
