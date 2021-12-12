@@ -1,5 +1,8 @@
 package com.doranco.blog.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -15,14 +18,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reagir {
+public class Reagir implements Serializable {
 	@EmbeddedId
 	private ReagirId reagirId;
+	@Column(name="likes") 
 	private boolean like;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idUtilisateur")
 	private Utilisateur utilisateur;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idPublication")
 	private Publication publication;
 }

@@ -27,5 +27,5 @@ public class EnvoyerMessage implements Serializable {
 	private Date dateEnvoi;
 	private boolean lu;
 	@ManyToOne
-	private EnvoyerMessage envoyerMessage;
+	private Utilisateur	utilisateur;
 }

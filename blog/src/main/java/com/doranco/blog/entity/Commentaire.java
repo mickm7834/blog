@@ -1,5 +1,6 @@
 package com.doranco.blog.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.EmbeddedId;
@@ -17,15 +18,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Commentaire {
+public class Commentaire implements Serializable {
 	@EmbeddedId
 	private CommentaireId commentaireId;
 	private String texte;
 	private Date dateCommentaire;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idUtilisateur")
 	private Utilisateur utilisateur;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idPublication")
 	private Publication publication;
 }

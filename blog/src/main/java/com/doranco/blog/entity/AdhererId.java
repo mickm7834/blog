@@ -10,8 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Embeddable
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor

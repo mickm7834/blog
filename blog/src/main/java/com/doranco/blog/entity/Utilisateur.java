@@ -50,9 +50,9 @@ public class Utilisateur implements Serializable {
 	private List<EnvoyerDemande> envoyerDemandes = new ArrayList<>();
 	@ManyToMany
 	private List<Groupe> groupes = new ArrayList<>();
-	@ManyToMany(mappedBy = "utilisateur")
-	@JsonIgnore
-	private List<Utilisateur> utilisateur;
+//	@ManyToMany(mappedBy = "utilisateur")
+//	@JsonIgnore
+//	private List<Utilisateur> utilisateur;
 	
 
 }

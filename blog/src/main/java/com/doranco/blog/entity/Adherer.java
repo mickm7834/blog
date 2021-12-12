@@ -1,5 +1,6 @@
 package com.doranco.blog.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.EmbeddedId;
@@ -17,14 +18,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Adherer {
+public class Adherer implements Serializable {
 	@EmbeddedId
 	private AdhererId adhererId;
 	private Date dateAdhesion;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idUtilisateur")
 	private Utilisateur utilisateur;
 	@ManyToOne(optional = false)
-	@MapsId
+	@MapsId("idGroupe")
 	private Groupe groupe;
 }
